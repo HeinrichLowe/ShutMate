@@ -34,7 +34,7 @@ def shutdown_now() -> None:
         show_notification("Desligando o Linux agora...")
 
 
-def parse_time_string(time_str: str) -> int:
+def parse_time_string(time_str: str) -> int | None:
     """
     Convert a time string like "1H 30M" into total seconds.
 
@@ -70,7 +70,7 @@ def schedule_shutdown():
     selected_time = combo_box.currentText()
     total_seconds = parse_time_string(selected_time)
     if total_seconds is None:
-        show_notification("Selecione um tempo válido!", "Erro")
+        show_notification("Please select a valid time!", "Error")
         return
 
     if os.name == "nt":
@@ -103,7 +103,7 @@ def shutdown_confirmation() -> None:
     dialog = QDialog(window)
     dialog.setWindowTitle("Confirm Shutdown")
     layout = QVBoxLayout()
-    label = QLabel("Tem certeza que quer desligar o computador agora?")
+    label = QLabel("Are you sure you want to shut down the computer now?")
     label.setAlignment(Qt.AlignmentFlag.AlignCenter)
     layout.addWidget(label)
 
@@ -127,7 +127,7 @@ def shutdown_confirmation() -> None:
     dialog.exec()
 
 
-def show_notification(message, title="Notification") -> None:
+def show_notification(message: str, title: str = "Notification") -> None:
     """
     Show a notification message box.
 
@@ -161,19 +161,12 @@ def show_notification(message, title="Notification") -> None:
     dialog.exec()
 
 
-def fechar_combo():
-    """
-    Close the combo box popup when an item is selected.
-    """
-
-    combo_box.hidePopup()
-
-
 # --- Aplication PyQt6 ---
 app = QApplication(sys.argv)
 
 window = QWidget()
 window.setWindowTitle("Sleep")
+window.setWindowIcon(QIcon("public/images/power_off.png"))
 window.setMinimumSize(QSize(800, 600))
 
 # --- Widgets ---
@@ -217,7 +210,6 @@ combo_box.addItems(
 # Optional: define a minimum width of the combo box
 combo_box.setMinimumContentsLength(15)
 combo_box.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
-combo_box.activated.connect(fechar_combo)
 
 # Turn off button and labels
 btn_desligar_agora = QToolButton()
@@ -226,7 +218,7 @@ btn_desligar_agora.setIconSize(QSize(64, 64))
 btn_desligar_agora.setFixedSize(QSize(120, 120))
 btn_desligar_agora.setStyleSheet("background-color: #E74C3C; border-radius: 10px;")
 
-label_desligar = QLabel("Desligar Agora")
+label_desligar = QLabel("Shutdown Now")
 label_desligar.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 label_desligar.setStyleSheet("font-size: 10pt; font-weight: bold; color: white;")
 
@@ -237,7 +229,7 @@ btn_programar.setIconSize(QSize(64, 64))
 btn_programar.setFixedSize(QSize(120, 120))
 btn_programar.setStyleSheet("background-color: #2ECC71; border-radius: 10px;")
 
-label_programar = QLabel("Programar")
+label_programar = QLabel("Set Schedule")
 label_programar.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 label_programar.setStyleSheet("font-size: 10pt; font-weight: bold; color: white;")
 
@@ -248,7 +240,7 @@ btn_cancel.setIconSize(QSize(64, 64))
 btn_cancel.setFixedSize(QSize(120, 120))
 btn_cancel.setStyleSheet("background-color: #ff644b; border-radius: 10px;")
 
-label_cancel = QLabel("Cancelar")
+label_cancel = QLabel("Cancel")
 label_cancel.setAlignment(Qt.AlignmentFlag.AlignHCenter)
 label_cancel.setStyleSheet("font-size: 10pt; font-weight: bold; color: white;")
 
