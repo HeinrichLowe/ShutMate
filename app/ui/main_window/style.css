@@ -1,0 +1,40 @@
+QWidget {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+QComboBox {
+    background-color: #444444;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    padding: 5px;
+    color: #FFFFFF;
+}
+
+QComboBox::drop-down {
+    border: 0px;
+}
+
+QComboBox::down-arrow {
+    image: url(app/assets/images/dropdown.png);
+    width: 15px;
+    height: 15px;
+    padding-right: 10px;
+}
+
+QComboBox::down-arrow:open {
+    image: url(app/assets/images/dropup.png);
+    width: 15px;
+    height: 15px;
+    padding-right: 10px;
+}
+
+QPushButton {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    opacity: 0.8;
+}
