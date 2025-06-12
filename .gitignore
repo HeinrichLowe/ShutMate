@@ -1,0 +1,9 @@
+# local env files
+.env
+
+# python
+**/__pycache__
+venv
+
+# pytest
+.pytest_cache
