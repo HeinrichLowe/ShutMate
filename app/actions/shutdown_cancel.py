@@ -1,5 +1,6 @@
 import os
 from app.ui.show_notification.show_notification import show_notification
+from app.utils.run_command_no_window import run_command_no_window
 
 
 def shutdown_cancel(main_window):
@@ -8,8 +9,8 @@ def shutdown_cancel(main_window):
     """
 
     if os.name == "nt":
-        os.system("shutdown /a")
+        run_command_no_window("shutdown /a")
     else:
-        os.system("shutdown -c")
+        run_command_no_window("shutdown -c")
 
     show_notification(main_window, "Desligamento cancelado.")

@@ -11,9 +11,9 @@ from PyQt6.QtGui import QIcon, QFont
 from app.actions import schedule_shutdown, shutdown_cancel
 from app.ui.shutdown_confirmation.shutdown_confirmation import shutdown_confirmation
 from app.utils.timer_options import TIMER_OPTIONS
+from app.utils.css_loader import css_loader
 
-with open("app/ui/main_window/style.css", "r", encoding="utf-8") as file:
-    main_css = file.read()
+main_css = css_loader("app/ui/main_window/style.css")
 
 
 def main_window():
@@ -23,7 +23,7 @@ def main_window():
 
     window = QWidget()
     window.setWindowTitle("Sleep")
-    window.setWindowIcon(QIcon("app/assets/images/power_off.png"))
+    window.setWindowIcon(QIcon("app/assets/images/sleep.ico"))
     window.setStyleSheet(main_css)
     window.setMinimumSize(QSize(800, 600))
 
