@@ -1,8 +1,5 @@
-# pylint: disable=no-name-in-module
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
 from PyQt6.QtCore import Qt
-
-# pylint: enable=no-name-in-module
 
 
 def show_notification(main_window, message: str, title: str = "Notification") -> None:

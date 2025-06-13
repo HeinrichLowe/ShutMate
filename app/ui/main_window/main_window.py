@@ -1,4 +1,3 @@
-# pylint: disable=no-name-in-module
 from PyQt6.QtWidgets import (
     QWidget,
     QToolButton,
@@ -9,8 +8,6 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QIcon, QFont
-
-# pylint: enable=no-name-in-module
 from app.actions import schedule_shutdown, shutdown_cancel
 from app.ui.shutdown_confirmation.shutdown_confirmation import shutdown_confirmation
 from app.utils.timer_options import TIMER_OPTIONS

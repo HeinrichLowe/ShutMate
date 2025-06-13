@@ -1,9 +1,5 @@
 import os
-
-# pylint: disable=no-name-in-module
 from PyQt6.QtWidgets import QComboBox
-
-# pylint: enable=no-name-in-module
 from app.ui.show_notification.show_notification import show_notification
 from app.utils.parse_time_string import parse_time_string
 
