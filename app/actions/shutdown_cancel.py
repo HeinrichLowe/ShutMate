@@ -13,4 +13,4 @@ def shutdown_cancel(main_window):
     else:
         run_command_no_window("shutdown -c")
 
-    show_notification(main_window, "Desligamento cancelado.")
+    show_notification(main_window, "Shutdown cancelled.")

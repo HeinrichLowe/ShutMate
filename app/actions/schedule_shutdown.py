@@ -22,4 +22,4 @@ def schedule_shutdown(main_window, combo_box: QComboBox) -> None:
         minutes = max(1, total_seconds // 60)
         run_command_no_window(f"shutdown -h +{minutes}")
 
-    show_notification(main_window, f"Desligamento programado para {selected_time}.")
+    show_notification(main_window, f"Scheduled shutdown for {selected_time}.")

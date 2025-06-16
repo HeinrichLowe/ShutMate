@@ -23,7 +23,7 @@ def main_window():
 
     window = QWidget()
     window.setWindowTitle("Sleep")
-    window.setWindowIcon(QIcon("app/assets/images/sleep.ico"))
+    window.setWindowIcon(QIcon("app/assets/images/shutmate.ico"))
     window.setStyleSheet(main_css)
     window.setMinimumSize(QSize(800, 600))
 
