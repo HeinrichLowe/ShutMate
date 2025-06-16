@@ -18,26 +18,32 @@ build_exe_options = {
 }
 
 setup(
-    name="Sleep",
+    name="ShutMate",
     version="1.0",
-    description="Sleep timer app",
+    description="Sleep timer for PC (Windows and Linux).",
     options={"build_exe": build_exe_options},
     executables=[
         Executable(
             "main.py",
             base="Win32GUI" if sys.platform == "win32" else None,
-            target_name="Sleep.exe",
-            icon="app/assets/images/sleep.ico",
+            target_name="ShutMate.exe",
+            icon="app/assets/images/shutmate.ico",
         )
     ],
 )
+```
+
+### Build Command:
+
+```
+python setup.py build
 ```
 
 ###
 
 # About
 
-This is a personal app designed to create a "sleeper" for the PC (Windows and Linux). I often needed to leave my computer on while I was asleep or away, but I didn’t want it running unnecessarily.
+This is a personal app designed to create a sleep timer for PC (Windows and Linux). I often needed to leave my computer on while I was asleep or away, but I didn’t want it running unnecessarily.
 
 For years, I used a collection of _**.bat**_ files, each one containing commands to shut the PC down after a set amount of time.
 
