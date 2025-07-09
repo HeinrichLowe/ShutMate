@@ -9,7 +9,7 @@ def parse_time_string(time_str: str) -> int | None:
         time_str (str): The time string to parse.
 
     Returns:
-        int: Total seconds represented by the time string.
+        int or None: Total seconds represented by the time string, or None if the input is invalid.
     """
 
     if time_str == "Select the timer":
