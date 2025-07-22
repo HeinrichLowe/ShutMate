@@ -15,7 +15,7 @@ from app.utils.css_loader import css_loader
 from app.utils.resource_path import resource_path
 
 # CSS Files
-MAIN_CSS = css_loader("app/ui/main_window/style.css")
+MAIN_CSS = css_loader(resource_path("app/assets/css/styles.css"))
 
 # App Icons
 SHUTDOWN_ICON = resource_path("app/assets/images/shutmate.ico")
