@@ -12,8 +12,16 @@ from app.actions import schedule_shutdown, shutdown_cancel
 from app.ui.shutdown_confirmation.shutdown_confirmation import ShutdownConfirmation
 from app.utils.timer_options import TIMER_OPTIONS
 from app.utils.css_loader import css_loader
+from app.utils.resource_path import resource_path
 
-main_css = css_loader("app/ui/main_window/style.css")
+# CSS Files
+MAIN_CSS = css_loader("app/ui/main_window/style.css")
+
+# App Icons
+SHUTDOWN_ICON = resource_path("app/assets/images/shutmate.ico")
+POWER_OFF_ICON = resource_path("app/assets/images/power_off.png")
+SLEEP_TIMER_ICON = resource_path("app/assets/images/sleep_timer.png")
+CANCEL_ICON = resource_path("app/assets/images/cancel.png")
 
 
 class MainWindow(QWidget):
@@ -29,8 +37,8 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("ShutMate")
-        self.setWindowIcon(QIcon("app/assets/images/shutmate.ico"))
-        self.setStyleSheet(main_css)
+        self.setWindowIcon(QIcon(SHUTDOWN_ICON))
+        self.setStyleSheet(MAIN_CSS)
         self.setMinimumSize(QSize(800, 600))
 
         # --- Widgets ---
@@ -43,13 +51,12 @@ class MainWindow(QWidget):
         self.combo_box = QComboBox()
         self.combo_box.setMaxVisibleItems(10)
         self.combo_box.addItems(TIMER_OPTIONS)
-        # Optional: define a minimum width of the combo box
         self.combo_box.setMinimumContentsLength(15)
         self.combo_box.setSizeAdjustPolicy(QComboBox.SizeAdjustPolicy.AdjustToContents)
 
         # Turn off button and labels
         btn_shutdown_now = QToolButton()
-        btn_shutdown_now.setIcon(QIcon("app/assets/images/power_off.png"))
+        btn_shutdown_now.setIcon(QIcon(POWER_OFF_ICON))
         btn_shutdown_now.setIconSize(QSize(64, 64))
         btn_shutdown_now.setFixedSize(QSize(120, 120))
         btn_shutdown_now.setStyleSheet(
@@ -64,7 +71,7 @@ class MainWindow(QWidget):
 
         # Schedule shutdown button and labels
         btn_schedule = QToolButton()
-        btn_schedule.setIcon(QIcon("app/assets/images/sleep_timer.png"))
+        btn_schedule.setIcon(QIcon(SLEEP_TIMER_ICON))
         btn_schedule.setIconSize(QSize(64, 64))
         btn_schedule.setFixedSize(QSize(120, 120))
         btn_schedule.setStyleSheet("background-color: #2ECC71; border-radius: 10px;")
@@ -77,7 +84,7 @@ class MainWindow(QWidget):
 
         # Cancel shutdown button and labels
         btn_cancel = QToolButton()
-        btn_cancel.setIcon(QIcon("app/assets/images/cancel.png"))
+        btn_cancel.setIcon(QIcon(CANCEL_ICON))
         btn_cancel.setIconSize(QSize(64, 64))
         btn_cancel.setFixedSize(QSize(120, 120))
         btn_cancel.setStyleSheet("background-color: #ff644b; border-radius: 10px;")
