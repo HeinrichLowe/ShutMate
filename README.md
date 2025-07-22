@@ -1,9 +1,32 @@
 # Build
 
-I used [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) to "package" the project, and it's working perfectly. However, you’re obviously free to choose/test another packager if you prefer.
+I tested [_**PyInstaller**_](https://github.com/pyinstaller/pyinstaller) and [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) to "package" the project, and it's working perfectly. However, you’re obviously free to choose/test another packager if you prefer.
 
 > [!NOTE]
-> Since I wanted to leave the choice of packager open, I decided not to include the setup.py file for cx_Freeze in the repository. Still, I’ll leave the code I used for the build below.
+> Since I wanted to leave the choice of packager open, I decided not to include the setup file for [_**PyInstaller**_](https://github.com/pyinstaller/pyinstaller) or [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) in the repository. Still, I’ll leave the code I used for the build below.
+
+#### PyInstaller
+
+```bash
+pyinstaller main.py ^
+    --name "ShutMate" ^
+    --add-data "app/assets/images;app/assets/images" ^
+    --add-data "app/assets/css;app/assets/css" ^
+    --icon="app/assets/images/shutmate.ico" ^
+    --noconsole ^
+    --onefile
+```
+
+##### PyInstaller Build Command:
+
+```
+.\setup.bat
+```
+
+> [!NOTE]
+> The PyInstaller build command is only necessary if you decided to create a '.bat' file. You can just simply copy the command into the terminal if you prefer.
+
+#### cx_Freeze
 
 ```py
 import sys
@@ -33,7 +56,7 @@ setup(
 )
 ```
 
-### Build Command:
+##### cx_Freeze Build Command:
 
 ```
 python setup.py build
