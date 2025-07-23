@@ -28,5 +28,5 @@ def schedule_shutdown(main_window, combo_box: QComboBox) -> None:
         minutes = max(1, total_seconds // 60)
         run_command_no_window(f"shutdown -h +{minutes}")
 
-    notification = SN(main_window, f"Scheduled shutdown for {selected_time}.")
+    notification = SN(main_window, f"Scheduled shutdown in {selected_time}h.")
     notification.exec()

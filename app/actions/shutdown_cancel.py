@@ -16,5 +16,5 @@ def shutdown_cancel(main_window):
     else:
         run_command_no_window("shutdown -c")
 
-    notification = SN(main_window, "Shutdown cancelled.")
+    notification = SN(main_window, "Shutdown canceled.")
     notification.exec()
