@@ -1,5 +1,9 @@
 from PyQt6.QtWidgets import QDialog, QVBoxLayout, QLabel, QPushButton, QHBoxLayout
 from PyQt6.QtCore import Qt
+from app.utils.css_loader import css_loader
+from app.utils.resource_path import resource_path
+
+SN_CSS = css_loader(resource_path("app/assets/css/show_notification.css"))
 
 
 class ShowNotification(QDialog):
@@ -18,15 +22,15 @@ class ShowNotification(QDialog):
     def __init__(self, parent, message: str, title: str = "Notification"):
         super().__init__(parent)
         self.setWindowTitle(title)
+        self.setStyleSheet(SN_CSS)
         layout = QVBoxLayout()
         label = QLabel(message)
         label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(label)
 
         btn_ok = QPushButton("OK")
-        btn_ok.setStyleSheet(
-            "background-color: #0078D7; color: white; padding: 5px none;"
-        )
+        btn_ok.setObjectName("showNotificationOkButton")
+        btn_ok.setCursor(Qt.CursorShape.PointingHandCursor)
         btn_ok.clicked.connect(self.accept)
 
         btn_layout = QHBoxLayout()

@@ -38,3 +38,36 @@ QPushButton {
 QPushButton:hover {
     opacity: 0.8;
 }
+
+#shutdownNowButton {
+    background-color: #E74C3C; 
+    border-radius: 10px;
+}
+
+#shutdownNowButtonLabel {
+    font-size: 10pt; 
+    font-weight: bold; 
+    color: white;
+}
+
+#scheduleButton {
+    background-color: #2ECC71; 
+    border-radius: 10px;
+}
+
+#scheduleButtonLabel {
+    font-size: 10pt; 
+    font-weight: bold; 
+    color: white;
+}
+
+#cancelButton {
+    background-color: #FF644B; 
+    border-radius: 10px;
+}
+
+#cancelButtonLabel {
+    font-size: 10pt; 
+    font-weight: bold; 
+    color: white;
+}
