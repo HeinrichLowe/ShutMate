@@ -3,7 +3,7 @@ import re
 
 def parse_time_string(time_str: str) -> int | None:
     """
-    Convert a time string like "1H 30M" into total seconds.
+    Convert a time string like "01:30" into total seconds.
 
     Args:
         time_str (str): The time string to parse.
@@ -15,15 +15,11 @@ def parse_time_string(time_str: str) -> int | None:
     if time_str == "Select the timer":
         return None
 
-    hours = 0
-    minutes = 0
+    match = re.match(r"^(\d{2}):(\d{2})$", time_str)
+    if not match:
+        return None
 
-    match = re.findall(r"(\d+)\s*H", time_str)
-    if match:
-        hours = int(match[0])
-
-    match = re.findall(r"(\d+)\s*M", time_str)
-    if match:
-        minutes = int(match[-1]) if len(match) > 1 else int(match[0])
+    hours = int(match.group(1))
+    minutes = int(match.group(2))
 
     return (hours * 3600) + (minutes * 60)
