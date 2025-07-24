@@ -1,13 +1,51 @@
 # Build
 
-I tested [_**PyInstaller**_](https://github.com/pyinstaller/pyinstaller) and [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) to "package" the project, and it's working perfectly. However, you’re obviously free to choose/test another packager if you prefer.
+I tested [_**PyInstaller**_](https://github.com/pyinstaller/pyinstaller) and [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) to package the project, and both work perfectly. However, you’re obviously free to choose or test another packager if you prefer.
 
 > [!NOTE]
 > Since I wanted to leave the choice of packager open, I decided not to include the setup file for [_**PyInstaller**_](https://github.com/pyinstaller/pyinstaller) or [_**cx_Freeze**_](https://github.com/marcelotduarte/cx_Freeze) in the repository. Still, I’ll leave the code I used for the build below.
 
-#### PyInstaller
+### 1. It is highly recommended to use a virtual environment to install all necessary dependencies.
 
-```bash
+```
+python -m venv venv
+```
+
+### 2. Make sure the virtual environment is activated. If not, activate it.
+
+_**Windows**_
+
+```
+venv/scripts/activate
+```
+
+_**Linux**_
+
+```
+source venv/bin/activate
+```
+
+### 3. Now you need to install all the dependencies.
+
+```
+pip install -r requirements.txt
+```
+
+### 4. Next, choose which packager you will use and follow its step-by-step instructions.
+
+#### PyInstaller _(recommended)_
+
+_**Installing**_
+
+```
+pip install pyinstaller
+```
+
+_**Building**_
+
+_**Windows**_
+
+```bat
 pyinstaller main.py ^
     --name "ShutMate" ^
     --add-data "app/assets/images;app/assets/images" ^
@@ -17,18 +55,50 @@ pyinstaller main.py ^
     --onefile
 ```
 
+_**Linux**_
+
+```sh
+pyinstaller main.py \
+    --name "ShutMate" \
+    --add-data "app/assets/images;app/assets/images" \
+    --add-data "app/assets/css;app/assets/css" \
+    --icon="app/assets/images/shutmate.ico" \
+    --noconsole \
+    --onefile
+```
+
 ##### PyInstaller Build Command:
+
+_**Windows**_
 
 ```
 .\setup.bat
 ```
 
+_**Linux**_
+
+```
+./setup.sh
+```
+
 > [!NOTE]
-> The PyInstaller build command is only necessary if you decided to create a '.bat' file. You can just simply copy the command into the terminal if you prefer.
+> The PyInstaller build command above is only necessary if you decide to create a **`.bat`** or **`.sh`** file _(which I highly recommend for testing and easier visualization)_. You can simply copy the command below into the terminal if you prefer.
+
+```
+pyinstaller main.py --name "ShutMate" --add-data "app/assets/images;app/assets/images" --add-data "app/assets/css;app/assets/css" --icon="app/assets/images/shutmate.ico" --noconsole --onefile
+```
 
 #### cx_Freeze
 
-```py
+_**Installing**_
+
+```
+pip install cx-Freeze
+```
+
+_**Building**_
+
+```python
 import sys
 from cx_Freeze import setup, Executable
 
@@ -68,7 +138,7 @@ python setup.py build
 
 This is a personal app designed to create a sleep timer for PC (Windows and Linux). I often needed to leave my computer on while I was asleep or away, but I didn’t want it running unnecessarily.
 
-For years, I used a collection of _**.bat**_ files, each one containing commands to shut the PC down after a set amount of time.
+For years, I used a collection of _**`.bat`**_ files, each containing commands to shut the PC down after a set amount of time.
 
 Since I’ve been learning to program for a few years now, I decided to update this "system" (if I can call it that).
 
