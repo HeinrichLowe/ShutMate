@@ -60,8 +60,8 @@ _**Linux**_
 ```sh
 pyinstaller main.py \
     --name "ShutMate" \
-    --add-data "app/assets/images;app/assets/images" \
-    --add-data "app/assets/css;app/assets/css" \
+    --add-data "app/assets/images:app/assets/images" \
+    --add-data "app/assets/css:app/assets/css" \
     --icon="app/assets/images/shutmate.ico" \
     --noconsole \
     --onefile
