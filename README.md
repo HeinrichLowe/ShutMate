@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ### 4. Next, choose which packager you will use and follow its step-by-step instructions.
 
-#### PyInstaller _(recommended)_
+#### ~ PyInstaller _(recommended)_ ~
 
 _**Installing**_
 
@@ -84,11 +84,19 @@ _**Linux**_
 > [!NOTE]
 > The PyInstaller build command above is only necessary if you decide to create a **`.bat`** or **`.sh`** file _(which I highly recommend for testing and easier visualization)_. You can simply copy the command below into the terminal if you prefer.
 
+_**Windows**_
+
 ```
 pyinstaller main.py --name "ShutMate" --add-data "app/assets/images;app/assets/images" --add-data "app/assets/css;app/assets/css" --icon="app/assets/images/shutmate.ico" --noconsole --onefile
 ```
 
-#### cx_Freeze
+_**Linux**_
+
+```
+pyinstaller main.py --name "ShutMate" --add-data "app/assets/images:app/assets/images" --add-data "app/assets/css:app/assets/css" --icon="app/assets/images/shutmate.ico" --noconsole --onefile
+```
+
+#### ~ cx_Freeze ~
 
 _**Installing**_
 
